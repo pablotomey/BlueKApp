@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/deviceFragment">
+    <fragment
+        android:id="@+id/deviceFragment"
+        android:name="cl.konadev.bluekapp.ui.fragment.DeviceFragment"
+        android:label="Selelccionar dispositivo"
+        tools:layout="@layout/fragment_device" />
+</navigation>
