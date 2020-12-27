@@ -33,9 +33,9 @@ android {
         jvmTarget = '1.8'
     }
     // DataBindong
-    buildFeatures {
+    /*buildFeatures {
         dataBinding = true
-    }
+    }*/
 }
 
 dependencies {
@@ -47,9 +47,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     // Koin
-    implementation "org.koin:koin-android:2.0.1"
-    implementation "org.koin:koin-android-scope:2.0.1"
-    implementation "org.koin:koin-android-viewmodel:2.0.1"
+    //implementation "org.koin:koin-android:2.0.1"
+    //implementation "org.koin:koin-android-scope:2.0.1"
+    //implementation "org.koin:koin-android-viewmodel:2.0.1"
 
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/deviceFragment">
+    app:startDestination="@id/deviceListFragment">
     <fragment
-        android:id="@+id/deviceFragment"
-        android:name="cl.konadev.bluekapp.ui.fragment.DeviceFragment"
-        android:label="Selelccionar dispositivo"
-        tools:layout="@layout/fragment_device" />
+        android:id="@+id/deviceListFragment"
+        android:name="cl.konadev.bluekapp.ui.fragment.DeviceListFragment"
+        android:label="Seleccionar dispositivo"
+        tools:layout="@layout/fragment_device_list" />
 </navigation>
