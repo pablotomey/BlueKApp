@@ -5,10 +5,12 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import cl.konadev.bluekapp.R
 import cl.konadev.bluekapp.ui.adapter.DeviceAdapter
@@ -27,8 +29,10 @@ class DeviceListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_device_list, container, false)
+        setHasOptionsMenu(true)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_device_list, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,9 +49,14 @@ class DeviceListFragment : Fragment() {
         if (!bluetoothAdapter!!.isEnabled) {
             val bluetoothIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             startActivityForResult(bluetoothIntent, REQUEST_ENABLED_BT)
+
         }
 
         pairDevices()
+
+        update_devices.setOnClickListener {
+            pairDevices()
+        }
 
     }
 
@@ -70,8 +79,25 @@ class DeviceListFragment : Fragment() {
 
         if (requestCode == REQUEST_ENABLED_BT)
             if (resultCode == Activity.RESULT_OK)
-                if (bluetoothAdapter!!.isEnabled) Timber.d("BLUETOOTH IS ENABLED")
+                if (bluetoothAdapter!!.isEnabled) {
+                    Timber.d("BLUETOOTH IS ENABLED")
+                    pairDevices()
+                }
                 else Timber.d("BLUETOOTH IS DISABLED")
             else if (requestCode == Activity.RESULT_CANCELED) Timber.d("BLUETOOTH IS CANCELED")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_bt_conection, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.settings_bt -> {
+                val bottomMenuFragment = BottomMenuFragment()
+                bottomMenuFragment.show(requireActivity().supportFragmentManager,"BOTTOM_SHEET")
+            }
+        }
+        return item.onNavDestinationSelected(findNavController()) || super.onOptionsItemSelected(item)
     }
 }

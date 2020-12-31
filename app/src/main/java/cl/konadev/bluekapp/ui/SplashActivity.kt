@@ -21,4 +21,10 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onPause() {
+        coroutineScope.cancel()
+        super.onPause()
+
+    }
 }

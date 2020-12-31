@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="device_vector">device vector</string>
+    <string name="activar_bluetooth">Activar Bluetooth</string>
+    <string name="salir_de_la_app">Salir de la app</string>
+    <string name="settings">Settings</string>
 </resources>
